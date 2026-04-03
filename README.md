@@ -3,35 +3,35 @@ A personalized news recommendation system upgrading the NRMS model with contextu
 
 # Neural News Recommendation with Multi-Head Self-Attention & DistilBERT
 
-[cite_start]This project presents an architectural upgrade of the NRMS (Neural News Recommendation with Multi-Head Self-Attention) framework by integrating DistilBERT contextual embeddings to replace traditional static GloVe word vectors[cite: 9, 17, 21].
+This project presents an architectural upgrade of the NRMS (Neural News Recommendation with Multi-Head Self-Attention) framework by integrating DistilBERT contextual embeddings to replace traditional static GloVe word vectors.
 
 ---
 
 ## Project Overview
-[cite_start]The system is built and evaluated on the Microsoft News Dataset (MIND), a large-scale benchmark for news recommendation[cite: 18, 58, 59]. [cite_start]The primary goal was to resolve the "positional blindness" of baseline models, enabling the network to understand word order, syntax, and deep semantic context within news titles and abstracts[cite: 8, 24, 84].
+The system is built and evaluated on the Microsoft News Dataset (MIND), a large-scale benchmark for news recommendation. The primary goal was to resolve the "positional blindness" of baseline models, enabling the network to understand word order, syntax, and deep semantic context within news titles and abstracts.
 
-* [cite_start]Contextual Embeddings: Transitioned from GloVe to DistilBERT to capture dynamic word meanings based on surrounding context[cite: 25, 26, 50, 51].
-* [cite_start]Positional Awareness: Leveraged Transformer-based positional encodings to provide spatial awareness to the self-attention layers[cite: 11, 84, 173].
-* [cite_start]Offline Caching: Developed a high-efficiency caching pipeline to handle 230,000+ impression logs within the hardware constraints of Kaggle T4 GPUs[cite: 13, 137, 138, 139].
+* Contextual Embeddings: Transitioned from GloVe to DistilBERT to capture dynamic word meanings based on surrounding context.
+* Positional Awareness: Leveraged Transformer-based positional encodings to provide spatial awareness to the self-attention layers.
+* Offline Caching: Developed a high-efficiency caching pipeline to handle 230,000+ impression logs within the hardware constraints of Kaggle T4 GPUs.
 
 ---
 
 ## Architectural Evolution
-[cite_start]The project followed a three-stage iterative development process to optimize news and user representations[cite: 27, 28, 168]:
+The project followed a three-stage iterative development process to optimize news and user representations:
 
 ### 1. News Encoder
-* [cite_start]Iteration 1 (Baseline): Replicated the original NRMS using 300-dimensional static GloVe vectors[cite: 170, 171].
-* [cite_start]Iteration 2 (Frozen DistilBERT): Replaced GloVe with a pre-trained DistilBERT feature extractor to inject positional identity[cite: 172, 173].
-* [cite_start]Iteration 3 (Fine-tuned DistilBERT): Fine-tuned DistilBERT attention heads specifically on MIND categories to specialize the embeddings for news syntax[cite: 174, 175].
+* Iteration 1 (Baseline): Replicated the original NRMS using 300-dimensional static GloVe vectors.
+* Iteration 2 (Frozen DistilBERT): Replaced GloVe with a pre-trained DistilBERT feature extractor to inject positional identity.
+* Iteration 3 (Fine-tuned DistilBERT): Fine-tuned DistilBERT attention heads specifically on MIND categories to specialize the embeddings for news syntax.
 
 ### 2. User Encoder & Click Predictor
-* [cite_start]User Encoder: Forges a user interest profile u by modeling the conceptual relationships between historically clicked articles using Multi-Head Self-Attention[cite: 94, 95].
-* [cite_start]Click Predictor: Calculates the engagement probability using a computationally efficient dot product between the user vector and candidate article vector: y = uT * rc[cite: 96, 97].
+* User Encoder: Forges a user interest profile u by modeling the conceptual relationships between historically clicked articles using Multi-Head Self-Attention.
+* Click Predictor: Calculates the engagement probability using a computationally efficient dot product between the user vector and candidate article vector: y = uT * rc.
 
 ---
 
 ## Performance Results
-[cite_start]Results evaluated on the MIND-small validation set[cite: 60, 188]:
+Results evaluated on the MIND-small validation set:
 
 | Iteration | Model Configuration | AUC | MRR | nDCG@10 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -39,14 +39,14 @@ A personalized news recommendation system upgrading the NRMS model with contextu
 | 2 | Frozen Pre-Trained DistilBERT | 0.6618 | 0.3695 | 0.4138 |
 | 3 | Domain Fine-Tuned DistilBERT | 0.6792 | 0.3800 | 0.4260 |
 
-[cite_start]The transition to DistilBERT yielded a 7.19% AUC increase over the baseline[cite: 190, 192].
+The transition to DistilBERT yielded a 7.19% AUC increase over the baseline.
 
 ---
 
 ## Streamlit Demo Application
-[cite_start]To validate the model's real-world scalability, we deployed an interactive demonstration using Streamlit[cite: 195, 196]:
-* [cite_start]User Dashboard: Select from various mock profiles representing specific reading tastes[cite: 198, 199].
-* [cite_start]Live Inference: The backend loads pre-computed features from the local cache and generates ranked recommendations in real-time[cite: 200, 201].
+To validate the model's real-world scalability, we deployed an interactive demonstration using Streamlit:
+* User Dashboard: Select from various mock profiles representing specific reading tastes.
+* Live Inference: The backend loads pre-computed features from the local cache and generates ranked recommendations in real-time.
 
 ---
 
@@ -63,6 +63,6 @@ A personalized news recommendation system upgrading the NRMS model with contextu
 ---
 
 ## Documentation & Credits
-* [cite_start]Full Report: Detailed technical analysis and mathematical formulations can be found in the Technical Paper (PDF) located in the docs folder[cite: 212, 218].
-* [cite_start]Project Context: Originally developed as a team project at FPT University[cite: 3].
-* [cite_start]My Contributions: I was primarily responsible for implementing the DistilBERT News Encoder (Iteration 3), architecting the Offline Caching pipeline, and developing the Streamlit application logic[cite: 28, 137, 196].
+* Full Report: Detailed technical analysis and mathematical formulations can be found in the Technical Paper (PDF) located in the docs folder.
+* Project Context: Originally developed as a team project at FPT University.
+* My Contributions: I was primarily responsible for implementing the DistilBERT News Encoder (Iteration 3), architecting the Offline Caching pipeline, and developing the Streamlit application logic.
