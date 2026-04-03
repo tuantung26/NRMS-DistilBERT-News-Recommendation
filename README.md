@@ -1,8 +1,60 @@
 # NRMS-DistilBERT-News-Recommendation
 A personalized news recommendation system upgrading the NRMS model with contextual DistilBERT embeddings. Includes offline caching for GPU efficiency and a live Streamlit demo.
 
-📰 Neural News Recommendation with Multi-Head Self-Attention & DistilBERTProject Authors: Le Anh Duc, Ngo Ky Anh, Tran Xuan Tung, Le Hoang Minh Tuan, Ngo Tuan Tung Course: DAP391m - FPT University Dataset: Microsoft News Dataset (MIND) 1. AbstractPersonalized news recommendation systems are essential for helping users find relevant articles in today's crowded digital media spaces. This project documents the step-by-step upgrade of the NRMS model by replacing static GloVe embeddings with pre-trained contextualized embeddings from DistilBERT. To handle hardware constraints (Kaggle T4 GPUs), we utilized offline caching pipelines for efficient training.2. Model Architecture: News Encoder (Section 4.1)The News Encoder converts raw news text into a dense vector $r$. We resolve the limitations of static vectors by deploying a Frozen DistilBERT to extract tokens $E=[e_{1},...,e_{M}]$ from the title and abstract.Mathematical Formulation1. Word-level Multi-head Self-attention:
-The representation learned by the $k$-th attention head is computed as:
-$$\alpha_{i,j}^{k}=\frac{exp(e_{i}^{T}Q_{k}^{w}e_{j})}{\sum_{m=1}^{M}exp(e_{i}^{T}Q_{k}^{w}e_{m})}$$$$h_{i,k}^{w}=V_{k}^{w}(\sum_{j=1}^{M}\alpha_{i,j}^{k}e_{j})$$2. Additive Attention Network:
-To pool the multi-head representations based on word importance (e.g., entity names vs. conjunctions):
-$$a_{i}^{w}=q_{w}^{T}tanh(V_{w}\times h_{i}^{w}+v_{w})$$The final news representation is: $r=\sum_{i=1}^{M}\alpha_{i}^{w}h_{i}^{w}$.3. Iterative Development & PerformanceWe evolved the architecture through three distinct stages:IterationConfigurationStrategyAUCnDCG@10Iter 1Baseline (GloVe)Static 300-d vectors; blind to word order.0.61740.3829Iter 2Frozen DistilBERTReplaced GloVe; resolved sequence blindness.0.66180.4138Iter 3Fine-Tuned DistilBERTFine-tuned on MIND categories for specialized syntax.0.67920.4260Key Finding: Transitioning to Frozen DistilBERT immediately boosted AUC by 7.19%.4. Hardware Optimization: Offline CachingDue to strict constraints (Standard Kaggle T4 GPUs), processing complex bidirectional attention blocks concurrently during ranking loops was not feasible.Protocol: Fine-tuned DistilBERT separately and processed the text corpus independently.Mechanism: Resulting constructs are cached to disk; the NRMS training sequence loads numerical elements instantly, bypassing enormous network overhead.
+# Neural News Recommendation with Multi-Head Self-Attention & DistilBERT
+
+[cite_start]This project presents an architectural upgrade of the **NRMS** (Neural News Recommendation with Multi-Head Self-Attention) framework by integrating **DistilBERT** contextual embeddings to replace traditional static GloVe word vectors[cite: 1, 9].
+
+---
+
+## 📌 Project Overview
+[cite_start]The system is built and evaluated on the **Microsoft News Dataset (MIND)**, a large-scale benchmark for news recommendation[cite: 18, 58]. [cite_start]The primary goal was to resolve the "positional blindness" of baseline models, enabling the network to understand word order, syntax, and deep semantic context within news titles and abstracts[cite: 8, 24, 27].
+
+* [cite_start]**Contextual Embeddings**: Transitioned from GloVe to DistilBERT to capture dynamic word meanings based on surrounding context[cite: 9, 25].
+* [cite_start]**Positional Awareness**: Leveraged Transformer-based positional encodings to provide spatial awareness to the self-attention layers[cite: 11, 84].
+* [cite_start]**Offline Caching**: Developed a high-efficiency caching pipeline to handle 230,000+ impression logs within the hardware constraints of Kaggle T4 GPUs[cite: 13, 61, 137].
+
+---
+
+## 🏗️ Architectural Evolution
+[cite_start]The project followed a three-stage iterative development process to optimize news and user representations[cite: 28, 168]:
+
+### 1. News Encoder (Section 4.1)
+* [cite_start]**Iteration 1 (Baseline)**: Replicated the original NRMS using 300-dimensional static GloVe vectors[cite: 170].
+* [cite_start]**Iteration 2 (Frozen DistilBERT)**: Replaced GloVe with a pre-trained DistilBERT feature extractor to inject positional identity[cite: 172, 173].
+* [cite_start]**Iteration 3 (Fine-tuned DistilBERT)**: Fine-tuned DistilBERT attention heads specifically on MIND categories to specialize the embeddings for news syntax[cite: 10, 174].
+
+
+
+### 2. User Encoder & Click Predictor
+* [cite_start]**User Encoder**: Forges a user interest profile $u$ by modeling the conceptual relationships between historically clicked articles using Multi-Head Self-Attention[cite: 20, 95].
+* [cite_start]**Click Predictor**: Calculates the engagement probability $\hat{y}$ using a computationally efficient dot product between the user vector and candidate article vector: $\hat{y}=u^{T}r^{c}$[cite: 97].
+
+---
+
+## 📊 Performance Results
+[cite_start]Results evaluated on the **MIND-small validation set**[cite: 188]:
+
+| Iteration | Model Configuration | AUC | MRR | nDCG@10 |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | Baseline (Static GloVe) | 0.6174 | 0.3395 | 0.3829 |
+| 2 | Frozen Pre-Trained DistilBERT | 0.6618 | 0.3695 | 0.4138 |
+| **3** | **Domain Fine-Tuned DistilBERT** | **0.6792** | **0.3800** | **0.4260** |
+
+[cite_start]*The transition to DistilBERT yielded a **7.19% AUC increase** over the baseline[cite: 190].*
+
+---
+
+## 💻 Streamlit Demo Application
+[cite_start]To validate the model's real-world scalability, we deployed an interactive demonstration using **Streamlit**[cite: 195, 196]:
+* [cite_start]**User Dashboard**: Select from various mock profiles representing specific reading tastes[cite: 198, 199].
+* [cite_start]**Live Inference**: The backend loads pre-computed features from the local cache and generates ranked recommendations in real-time[cite: 201, 209].
+
+
+
+---
+
+## 🛠️ Quick Start
+1. **Clone the repository**:
+   ```bash
+   git clone [https://github.com/tuantung26/DAP391m_NewS.git](https://github.com/tuantung26/DAP391m_NewS.git)
