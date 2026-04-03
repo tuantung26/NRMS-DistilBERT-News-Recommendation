@@ -62,15 +62,18 @@ To validate the model's real-world scalability, we deployed an interactive demon
 ---
 
 ## Quick Start
-1. Clone the repository:
-   git clone https://github.com/tuantung26/NRMS-DistilBERT-News-Recommendation.git
+To configure and run the live recommendation demo:
 
-3. Install dependencies:
-   pip install -r requirements.txt
+1. Clone this repository to your local machine:
+```bash
+git clone https://github.com/lducc/DAP391m_NewS.git
+cd DAP391m_NewS
+```
 
-4. Run the Dashboard:
-   streamlit run streamlit_app/app.py
-
+2. Install the necessary Python packages:
+```bash
+pip install -r demo/requirements.txt
+```
 ---
 
 ## Documentation & Credits
