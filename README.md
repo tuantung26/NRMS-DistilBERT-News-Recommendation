@@ -1,10 +1,22 @@
 # NRMS-DistilBERT-News-Recommendation
 A personalized news recommendation system upgrading the NRMS model with contextual DistilBERT embeddings. Includes offline caching for GPU efficiency and a live Streamlit demo.
 
-# Neural News Recommendation with Multi-Head Self-Attention & DistilBERT
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Project Overview](#project-overview)
+3. [Architectural Evolution](#architectural-evolution)
+4. [Performance Results](#performance-results)
+5. [Streamlit Demo Application](#streamlit-demo-application)
+6. [Quick Start](#quick-start)
+7. [Documentation & Credits](#documentation--credits)
 
-This project presents an architectural upgrade of the NRMS (Neural News Recommendation with Multi-Head Self-Attention) framework by integrating DistilBERT contextual embeddings to replace traditional static GloVe word vectors.
+# NRMS-DistilBERT-News-Recommendation
 
+A next-generation personalized news recommendation system that combines the NRMS framework's powerful multi-head self-attention mechanism with DistilBERT's highly efficient contextual embeddings. Designed for high scalability and real-world applicability, this project includes offline caching for GPU efficiency and a user-friendly Streamlit demo.
+
+**Why this matters:** Traditional news recommendation systems often sacrifice contextual understanding and positional awareness. With this system, we've not only enhanced accuracy but addressed practical deployment challenges.
+
+[Explore the Technical Paper](./docs/TechnicalReport.pdf) | [Live Demo Tutorial](#streamlit-demo-application)
 ---
 
 ## Project Overview
