@@ -16,7 +16,6 @@ A next-generation personalized news recommendation system that combines the NRMS
 
 **Why this matters:** Traditional news recommendation systems often sacrifice contextual understanding and positional awareness. With this system, we've not only enhanced accuracy but addressed practical deployment challenges.
 
-[Explore the Technical Paper](./docs/TechnicalReport.pdf) | [Live Demo Tutorial](#streamlit-demo-application)
 ---
 
 ## Project Overview
