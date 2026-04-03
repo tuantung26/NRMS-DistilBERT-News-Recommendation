@@ -66,15 +66,22 @@ To configure and run the live recommendation demo:
 
 1. Clone this repository to your local machine:
 ```bash
-git clone https://github.com/lducc/DAP391m_NewS.git
-cd DAP391m_NewS
+git clone https://github.com/tuantung26/NRMS-DistilBERT-News-Recommendation.git
+cd NRMS-DistilBERT-News-Recommendation
 ```
 
 2. Install the necessary Python packages:
 ```bash
 pip install -r demo/requirements.txt
 ```
----
+
+3. **Download the Offline Caches:** Due to GitHub file limits, download the zipped multi-gigabyte cache binaries from **[Cloud Storage / Kaggle Link Placeholder]** and extract the contents directly into the local `/demo_export/` directory.
+
+4. Launch the Streamlit application:
+```bash
+streamlit run demo/app.py
+```
+
 
 ## Documentation & Credits
 * Full Report: Detailed technical analysis and mathematical formulations can be found in the [Technical Paper (PDF)](./paper/main.pdf). located in the docs folder.
