@@ -74,6 +74,6 @@ To validate the model's real-world scalability, we deployed an interactive demon
 ---
 
 ## Documentation & Credits
-* Full Report: Detailed technical analysis and mathematical formulations can be found in the Technical Paper (PDF) located in the docs folder.
+* Full Report: Detailed technical analysis and mathematical formulations can be found in the [Technical Paper (PDF)](./docs/main.pdf). located in the docs folder.
 * Project Context: Originally developed as a team project at FPT University.
 
