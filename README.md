@@ -52,12 +52,12 @@ To validate the model's real-world scalability, we deployed an interactive demon
 
 ## Quick Start
 1. Clone the repository:
-   git clone https://github.com/tuantung26/DAP391m_NewS.git
+   git clone https://github.com/tuantung26/NRMS-DistilBERT-News-Recommendation.git
 
-2. Install dependencies:
+3. Install dependencies:
    pip install -r requirements.txt
 
-3. Run the Dashboard:
+4. Run the Dashboard:
    streamlit run streamlit_app/app.py
 
 ---
@@ -65,4 +65,4 @@ To validate the model's real-world scalability, we deployed an interactive demon
 ## Documentation & Credits
 * Full Report: Detailed technical analysis and mathematical formulations can be found in the Technical Paper (PDF) located in the docs folder.
 * Project Context: Originally developed as a team project at FPT University.
-* My Contributions: I was primarily responsible for implementing the DistilBERT News Encoder (Iteration 3), architecting the Offline Caching pipeline, and developing the Streamlit application logic.
+
