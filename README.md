@@ -85,5 +85,5 @@ streamlit run demo/app.py
 
 ## Documentation & Credits
 * Full Report: Detailed technical analysis and mathematical formulations can be found in the [Technical Paper (PDF)](./paper/main.pdf). located in the docs folder.
-* Project Context: Originally developed as a team project at FPT University.
+* Project Context: Originally developed as a team project at FPT University within other members' contributions.
 
