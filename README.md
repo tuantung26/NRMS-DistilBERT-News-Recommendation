@@ -72,7 +72,7 @@ cd NRMS-DistilBERT-News-Recommendation
 
 2. Install the necessary Python packages:
 ```bash
-pip install -r demo/requirements.txt
+pip install -r streamlit_app/requirements.txt
 ```
 
 3. **Download the Offline Caches:** Due to GitHub file limits, download the zipped multi-gigabyte cache binaries from **[Cloud Storage / Kaggle Link Placeholder]** and extract the contents directly into the local `/demo_export/` directory.
