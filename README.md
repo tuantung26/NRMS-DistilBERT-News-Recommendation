@@ -75,7 +75,7 @@ cd NRMS-DistilBERT-News-Recommendation
 pip install -r streamlit_app/requirements.txt
 ```
 
-3. **Download the Offline Caches:** Due to GitHub file limits, download the zipped multi-gigabyte cache binaries from **[ Kaggle Link Placeholder](https://www.kaggle.com/code/giahnhong/nrms-with-fine-tuned-distil-bert)** and extract the contents directly into the local `/demo_export/` directory.
+3. **Download the Offline Caches:** Due to GitHub file limits, download the zipped multi-gigabyte cache binaries from **[ Kaggle Link Placeholder](https://www.kaggle.com/code/xuntngtrn/nrms-with-fine-tuned-distil-bert)** and extract the contents directly into the local `/demo_export/` directory.
 
 4. Launch the Streamlit application:
 ```bash
